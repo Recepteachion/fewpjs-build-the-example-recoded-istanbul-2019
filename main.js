@@ -13,7 +13,19 @@ let modal = document.querySelector(".hidden");
 let likeHeart = document.querySelector(".like-glyph");
 
 likeHeart.onclick=function(){
-    mimicServerCall()
+    mimicServerCall().then(function(res){
+        likeHeart.className="activated-heart ";
+        console.log("good")
+    }).catch(()=>{
+        let msg = "sorry bro";
+        console.log(msg);
+        errorModal.classList.remove("hidden");
+        document.getElementById("modal-message").innerHTML=msg;
+        setTimeout(function(){
+            errorModal.className="hidden";
+            
+        },5000)
+    })
 }
     
 
